@@ -112,7 +112,7 @@ def draw_temperature_chart(city, api_key, units, lang, target_img, position=(10,
             dt = datetime.fromtimestamp(item["dt"], tz=timezone.utc)
             if dt.date() == today:
                 temps.append(item["main"]["temp"])
-                times.append(dt.strftime("%H:%M")))
+                times.append(dt.strftime("%H:%M"))
 
         if not temps:
             return
