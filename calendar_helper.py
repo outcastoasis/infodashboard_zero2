@@ -22,10 +22,8 @@ def get_today_events_grouped(calendar_dict):
         else:
             flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
             try:
-                # Versuche normalen lokalen Server-Flow (für Desktop)
                 creds = flow.run_local_server(port=0)
             except:
-                # Kein Browser verfügbar – nutze manuellen Codeflow
                 auth_url, _ = flow.authorization_url(prompt='consent')
                 print("\nÖffne diesen Link auf einem anderen Gerät:")
                 print(auth_url)
@@ -40,6 +38,7 @@ def get_today_events_grouped(calendar_dict):
     now = datetime.datetime.utcnow()
     start_of_day = now.replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
     end_of_day = now.replace(hour=23, minute=59, second=59, microsecond=999999).isoformat() + 'Z'
+    today = now.date()  # für Vergleich bei ganztägigen Einträgen
 
     grouped_events = []
 
@@ -57,9 +56,16 @@ def get_today_events_grouped(calendar_dict):
         formatted = []
         for event in events:
             if 'dateTime' in event['start']:
+                # Zeitbezogenes Event
                 time = datetime.datetime.fromisoformat(event['start']['dateTime']).strftime('%H:%M')
             else:
+                # Ganztägiges Event
+                start_date = datetime.date.fromisoformat(event['start']['date'])
+                end_date = datetime.date.fromisoformat(event['end']['date'])  # exklusiv
+                if not (start_date <= today < end_date):
+                    continue  # Nicht heute – überspringen
                 time = "Ganztägig"
+            
             title = event.get('summary', 'Ohne Titel')
             formatted.append(f"{time} - {title}")
         
