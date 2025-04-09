@@ -4,6 +4,9 @@ from weather import fetch_weather, fetch_weather_later
 from icon_helper import get_icon_path
 from calendar_helper import get_today_events_grouped
 from config import API_KEY, CITY, LANG, UNITS
+import os
+import json
+import glob
 import requests
 import time
 import locale
@@ -80,13 +83,28 @@ def draw_calendar_entry(draw, entry, fonts, position, max_width=360, spacing=5):
     # Gesamthöhe zurückgeben (für y += ...)
     return y + len(lines) * (font_regular.size + spacing)
 
-# Funktion zum Abrufen der Temperaturdaten
-def fetch_temperature_data(city, api_key, units, lang):
-    url = f"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units={units}&lang={lang}"
+def draw_temperature_chart(city, api_key, units, lang, target_img, position=(10, 360), max_height=140):
+    today = datetime.now(timezone.utc).date()
+    cache_filename = f"/tmp/{today.strftime('%Y%m%d')}_forecast.json"
+
+    # Alte Cache-Dateien löschen (älter als 7 Tage)
     try:
-        res = requests.get(url)
-        data = res.json()
-        today = datetime.now(timezone.utc).date()
+        for file in glob.glob("/tmp/*_forecast.json"):
+            if os.path.getmtime(file) < time.time() - 7 * 86400:
+                os.remove(file)
+    except Exception as e:
+        print(f"Fehler beim Löschen alter Forecast-Dateien: {e}")
+
+    try:
+        if os.path.exists(cache_filename):
+            with open(cache_filename, "r") as f:
+                data = json.load(f)
+        else:
+            url = f"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units={units}&lang={lang}"
+            res = requests.get(url)
+            data = res.json()
+            with open(cache_filename, "w") as f:
+                json.dump(data, f)
 
         temps, times = [], []
         for item in data.get("list", []):
@@ -95,123 +113,46 @@ def fetch_temperature_data(city, api_key, units, lang):
                 temps.append(item["main"]["temp"])
                 times.append(dt.strftime("%H:%M"))
 
-        return temps, times
+        if not temps:
+            return
+
+        fig_height_inches = max_height / 90
+        fig, ax = plt.subplots(figsize=(5.8, fig_height_inches), dpi=100)
+
+        ax.plot(times, temps, marker="o", color="black", linewidth=5)
+
+        min_temp = min(temps)
+        max_temp = max(temps)
+
+        ax.axhline(y=min_temp, linestyle="--", linewidth=4, color="black")
+        ax.axhline(y=max_temp, linestyle="--", linewidth=4, color="black")
+
+        ax.text(len(times)-0.5, min_temp + 0.2, f"Min: {min_temp:.1f}°", fontsize=14, color="black")
+        ax.text(len(times)-0.5, max_temp + 0.2, f"Max: {max_temp:.1f}°", fontsize=14, color="black")
+
+        fig.patch.set_facecolor("white")
+        ax.set_facecolor("white")
+        ax.set_ylabel("°C", fontsize=13)
+        ax.set_xlabel("")
+        ax.set_title("Temperaturverlauf heute", fontsize=13, pad=8)
+        ax.tick_params(axis='x', labelrotation=45, labelsize=12)
+        ax.tick_params(axis='y', labelsize=12)
+
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+
+        buf = io.BytesIO()
+        fig.tight_layout(pad=2.0)
+        plt.savefig(buf, format="png", dpi=150, bbox_inches="tight")
+        buf.seek(0)
+        plt.close(fig)
+
+        chart = Image.open(buf).convert("RGB")
+        chart = chart.resize((360, max_height))
+        target_img.paste(chart, position)
 
     except Exception as e:
-        print(f"Fehler beim Abrufen der Temperaturdaten: {e}")
-        return [], []
-
-# Funktion zum Speichern der Temperaturdaten
-def save_temperature_data(temps, times, filename="temperature_data.json"):
-    data = {
-        "temps": temps,
-        "times": times,
-        "date": datetime.now().strftime("%Y-%m-%d")
-    }
-    with open(filename, "w") as f:
-        json.dump(data, f)
-
-# Funktion zum Laden der gespeicherten Temperaturdaten
-def load_temperature_data(filename="temperature_data.json"):
-    if os.path.exists(filename):
-        with open(filename, "r") as f:
-            data = json.load(f)
-            saved_date = datetime.strptime(data["date"], "%Y-%m-%d").date()
-            today = datetime.now().date()
-
-            # Wenn die Daten von heute sind, zurückgeben
-            if saved_date == today:
-                return data["temps"], data["times"]
-    
-    return [], []
-
-# Temperaturdaten abrufen und speichern, wenn nötig
-def get_temperature_data(city, api_key, units, lang):
-    temps, times = load_temperature_data()
-
-    # Wenn keine gespeicherten Daten existieren oder sie veraltet sind, abrufen und speichern
-    if not temps or not times:
-        temps, times = fetch_temperature_data(city, api_key, units, lang)
-        if temps and times:
-            save_temperature_data(temps, times)
-
-    return temps, times
-
-# Funktion zum Zeichnen des Temperaturverlaufs
-def draw_temperature_chart(city, api_key, units, lang, target_img, position=(10, 360), max_height=110):
-    temps, times = get_temperature_data(city, api_key, units, lang)
-
-    if not temps or not times:
-        print("Keine Temperaturdaten verfügbar.")
-        return
-
-    fig_height_inches = max_height / 100
-    fig, ax = plt.subplots(figsize=(5.8, fig_height_inches), dpi=100)
-
-    ax.plot(times, temps, marker="o", color="black", linewidth=5)
-
-    min_temp = min(temps)
-    max_temp = max(temps)
-
-    ax.axhline(y=min_temp, linestyle="--", linewidth=4, color="black")
-    ax.axhline(y=max_temp, linestyle="--", linewidth=4, color="black")
-
-    ax.text(len(times)-0.5, min_temp + 0.2, f"Min: {min_temp:.1f}°", fontsize=14, color="black")
-    ax.text(len(times)-0.5, max_temp + 0.2, f"Max: {max_temp:.1f}°", fontsize=14, color="black")
-
-    fig.patch.set_facecolor("white")
-    ax.set_facecolor("white")
-    ax.set_ylabel("°C", fontsize=10)
-    ax.set_xlabel("")
-    ax.set_title("Temperaturverlauf heute", fontsize=11, pad=6)
-    ax.tick_params(axis='x', labelrotation=45, labelsize=9)
-    ax.tick_params(axis='y', labelsize=9)
-
-    for spine in ax.spines.values():
-        spine.set_visible(False)
-
-    buf = io.BytesIO()
-    fig.tight_layout(pad=1.0)
-    plt.savefig(buf, format="png", dpi=150)
-    buf.seek(0)
-    plt.close(fig)
-
-    chart = Image.open(buf).convert("RGB")
-    chart = chart.resize((360, max_height))
-    target_img.paste(chart, position)
-
-# Funktion zum Warten bis 03:00 Uhr und Abrufen der Temperaturdaten
-def wait_for_update():
-    while True:
-        now = datetime.now(timezone.utc)
-        target_time = now.replace(hour=3, minute=0, second=0, microsecond=0)
-
-        # Wenn die aktuelle Zeit schon nach 03:00 Uhr ist, auf den nächsten Tag warten
-        if now > target_time:
-            target_time += timedelta(days=1)
-
-        # Berechne die Zeit bis 03:00 Uhr
-        wait_time = (target_time - now).total_seconds()
-
-        print(f"Warten bis 03:00 Uhr... ({wait_time // 3600} Stunden und {(wait_time % 3600) // 60} Minuten)")
-
-        # Warte bis zum nächsten Abruf
-        time.sleep(wait_time)
-
-        # Temperaturdaten abrufen und speichern
-        CITY = "DeineStadt"  # Passe die Stadt an
-        API_KEY = "DeinAPIKey"  # Dein API-Schlüssel
-        UNITS = "metric"  # Temperatur in Celsius
-        LANG = "de"  # Sprache
-
-        # Hier könntest du auch eine Funktion aufrufen, die das Bild anzeigt
-        # Beispiel: draw_temperature_chart(CITY, API_KEY, UNITS, LANG, img)
-
-        # Abrufen und Speichern der Temperaturdaten
-        get_temperature_data(CITY, API_KEY, UNITS, LANG)
-
-# Hauptprogramm starten
-wait_for_update()
+        print(f"Fehler beim Zeichnen des Temperaturverlaufs: {e}")
 
 BLACK = "black"
 BLUE = (0, 0, 255)
