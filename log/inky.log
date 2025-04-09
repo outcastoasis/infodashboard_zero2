@@ -1,0 +1,638 @@
+Running job at 2025-04-06 22:45:01
+/home/pi/Inky_Infodashboard/app.py:135: UserWarning: Tight layout not applied. The left and right margins cannot be made large enough to accommodate all Axes decorations.
+  fig.tight_layout(pad=1.0)
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-06 23:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-06 23:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-06 23:30:02
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-06 23:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 00:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 00:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 00:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 00:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 01:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 01:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 01:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 01:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 02:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 02:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 02:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 02:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 03:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 03:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 03:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 03:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 04:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 04:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 04:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 04:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 05:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 05:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 05:30:02
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 05:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 06:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 06:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 06:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 06:45:02
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 07:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 07:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 07:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 07:45:02
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 08:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 08:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 08:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 08:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 09:00:02
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 09:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 09:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 09:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 10:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 10:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 10:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 10:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 11:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 11:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 11:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 11:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 12:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 12:15:02
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 12:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 12:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 13:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 13:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 13:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 13:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 14:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 14:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 14:30:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 14:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 15:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 15:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 15:30:02
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 15:45:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 16:00:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 16:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 16:33:52
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 16:45:20
+Traceback (most recent call last):
+  File "/home/pi/Inky_Infodashboard/app.py", line 3, in <module>
+    from weather import fetch_weather, fetch_weather_later
+  File "/home/pi/Inky_Infodashboard/weather.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+Running job at 2025-04-07 17:00:15
+Traceback (most recent call last):
+  File "/home/pi/Inky_Infodashboard/app.py", line 3, in <module>
+    from weather import fetch_weather, fetch_weather_later
+  File "/home/pi/Inky_Infodashboard/weather.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+Running job at 2025-04-07 17:15:01
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 17:30:01
+/home/pi/Inky_Infodashboard/app.py:125: UserWarning: Tight layout not applied. The bottom and top margins cannot be made large enough to accommodate all Axes decorations.
+  fig.tight_layout(pad=2.0)
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 1.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 0.40s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+/home/pi/Inky_Infodashboard/venv/lib/python3.11/site-packages/inky/inky_ac073tc1a.py:285: UserWarning: Busy Wait: Held high. Waiting for 45.00s
+  warnings.warn("Busy Wait: Held high. Waiting for {:0.2f}s".format(timeout))
+Detected 7-Colour 800x480 (AC073TC1A)
+Running job at 2025-04-07 17:45:02
+Running job at 2025-04-07 18:00:02
+Running job at 2025-04-07 18:15:02
+Running job at 2025-04-07 18:30:01
+Running job at 2025-04-07 18:45:01
+Running job at 2025-04-07 19:00:01
+Running job at 2025-04-07 19:15:01
+Running job at 2025-04-07 19:30:01
+Running job at 2025-04-07 19:45:01
+Running job at 2025-04-07 20:00:01
+Running job at 2025-04-07 20:15:01
+Running job at 2025-04-07 20:30:01
+Running job at 2025-04-07 20:45:03
+Running job at 2025-04-07 21:10:33
+Running job at 2025-04-07 22:02:40
+Running job at 2025-04-08 06:30:01
+Running job at 2025-04-08 06:45:01
+Running job at 2025-04-08 07:00:01
+Running job at 2025-04-08 07:15:01
+Running job at 2025-04-08 07:30:01
+Running job at 2025-04-08 07:45:01
+Running job at 2025-04-08 08:00:01
+Running job at 2025-04-08 08:15:01
+Running job at 2025-04-08 08:30:01
+Running job at 2025-04-08 08:45:01
+Running job at 2025-04-09 10:45:01
+Running job at 2025-04-09 11:00:01
+Running job at 2025-04-09 11:15:18
