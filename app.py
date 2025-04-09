@@ -13,6 +13,7 @@ import locale
 import feedparser
 import qrcode
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import io
 from PIL import Image
 from inky.auto import auto
@@ -111,13 +112,17 @@ def draw_temperature_chart(city, api_key, units, lang, target_img, position=(10,
             dt = datetime.fromtimestamp(item["dt"], tz=timezone.utc)
             if dt.date() == today:
                 temps.append(item["main"]["temp"])
-                times.append(dt.strftime("%H:%M"))
+                times.append(dt)
 
         if not temps:
             return
 
         fig_height_inches = max_height / 90
         fig, ax = plt.subplots(figsize=(5.8, fig_height_inches), dpi=100)
+
+        ax.xaxis_date()
+        ax.xaxis.set_major_locator(mdates.HourLocator(interval=2))  # alle 2 Stunden
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%H:%M"))
 
         ax.plot(times, temps, marker="o", color="black", linewidth=5)
 
