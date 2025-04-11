@@ -1,7 +1,7 @@
 # 🖥️ Inky Infodashboard
 
-Ein Infodisplay für das Inky Impression 7.3" Display auf dem Raspberry Pi.  
-Zeigt Wetter, News, Kalendertermine (auch ganztägige), QR-Codes, sowie ein Temperaturdiagramm an – optimiert für E-Ink.
+Ein Infodisplay für das Inky Impression 7.3" Display auf dem Raspberry Pi Zero 2 W.  
+Zeigt Wetter, News, Kalendertermine (auch ganztägige), QR-Codes sowie ein Temperaturdiagramm an – optimiert für stromsparende E-Ink-Anzeige.
 
 ---
 
@@ -13,6 +13,12 @@ Zeigt Wetter, News, Kalendertermine (auch ganztägige), QR-Codes, sowie ein Temp
 - Google-Kalender-Integration für mehrere Konten
 - Temperaturverlauf des Tages mit Min-/Max-Markierung (Matplotlib)
 - Viertelstündliches Update via Cronjob
+
+---
+
+## ⚙️ Konfiguration
+
+Der Standort der Wetterdaten kann in der config.py geändert werden.
 
 ---
 
@@ -38,20 +44,20 @@ Inky_Infodashboard/
 
 ---
 
-## 🚀 Installation
+## 🔁 Automatische Anzeige
 
-```bash
-git clone https://github.com/dein-benutzer/Inky_Infodashboard.git
-cd Inky_Infodashboard
-chmod +x setup.sh
-./setup.sh
-```
+Das Skript `setup.sh` installiert alle wichtigen Pakete und richtet einen **Cronjob** ein, der `app.py` automatisch um :15 und :45 aufruft und das E-Ink Display aktualisiert.
 
 ---
 
-## 🔁 Automatische Anzeige
+## 🚀 Installation
 
-Das Skript `setup.sh` richtet einen **Cronjob** ein, der `app.py` automatisch alle 15 Minuten aufruft und das E-Ink Display aktualisiert.
+```bash
+git clone https://github.com/outcastoasis/infodashboard_zero2.git
+cd infodashboard_zero2
+chmod +x setup.sh
+./setup.sh
+```
 
 ---
 
@@ -63,16 +69,18 @@ Das Skript `setup.sh` richtet einen **Cronjob** ein, der `app.py` automatisch al
 API_KEY=dein_openweathermap_api_key
 ```
 
-- Für Google Kalender muss `credentials.json` vorhanden sein.  
-  Beim ersten Start wird automatisch `token.json` erstellt.
+- Für Google Kalender muss `credentials.json` vorhanden sein.
+- Gehe zu Google Cloud Console
+- Aktiviere die Google Calendar API
+- Erstelle Anmeldedaten für eine "Desktop App"
+- Lade die credentials.json herunter und lege sie ins Projektverzeichnis
+- Beim ersten Start von app.py wirst du zur Authentifizierung im Browser weitergeleitet – dabei wird automatisch eine token.json erstellt.
 
 ---
 
 ## 🖼️ Beispielanzeige
 
 ![Beispiel](assets/dashboard_simulation_git.png)
-
-*Lege dein Bild z. B. in einen `assets/`-Ordner und referenziere es so.*
 
 ---
 
