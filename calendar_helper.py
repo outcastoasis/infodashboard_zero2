@@ -4,72 +4,85 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
+from google.auth.exceptions import RefreshError
+from googleapiclient.errors import HttpError
 
 # Zugriff nur lesend
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
 def get_today_events_grouped(calendar_dict):
-    """
-    calendar_dict: dict mit { "Anzeigename": "calendar_id" }
-    Rückgabe: Liste von (Überschrift, [Eintrag1, Eintrag2, ...])
-    """
-    creds = None
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
-            try:
-                creds = flow.run_local_server(port=0)
-            except:
-                auth_url, _ = flow.authorization_url(prompt='consent')
-                print("\nÖffne diesen Link auf einem anderen Gerät:")
-                print(auth_url)
-                code = input("Gib den Code ein, den du nach der Anmeldung erhalten hast: ")
-                flow.fetch_token(code=code)
-                creds = flow.credentials
-        with open('token.json', 'w') as token:
-            token.write(creds.to_json())
+    try:
+        creds = None
+        if os.path.exists('token.json'):
+            creds = Credentials.from_authorized_user_file('token.json', SCOPES)
 
-    service = build('calendar', 'v3', credentials=creds)
-
-    now = datetime.datetime.utcnow()
-    start_of_day = now.replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
-    end_of_day = now.replace(hour=23, minute=59, second=59, microsecond=999999).isoformat() + 'Z'
-    today = now.date()  # für Vergleich bei ganztägigen Einträgen
-
-    grouped_events = []
-
-    for label, calendar_id in calendar_dict.items():
-        events_result = service.events().list(
-            calendarId=calendar_id,
-            timeMin=start_of_day,
-            timeMax=end_of_day,
-            maxResults=10,
-            singleEvents=True,
-            orderBy='startTime'
-        ).execute()
-
-        events = events_result.get('items', [])
-        formatted = []
-        for event in events:
-            if 'dateTime' in event['start']:
-                # Zeitbezogenes Event
-                time = datetime.datetime.fromisoformat(event['start']['dateTime']).strftime('%H:%M')
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                try:
+                    creds.refresh(Request())
+                except RefreshError as e:
+                    print(f"Token-Refresh fehlgeschlagen: {e}")
+                    return "AUTH_ERROR"
             else:
-                # Ganztägiges Event
-                start_date = datetime.date.fromisoformat(event['start']['date'])
-                end_date = datetime.date.fromisoformat(event['end']['date'])  # exklusiv
-                if not (start_date <= today < end_date):
-                    continue  # Nicht heute – überspringen
-                time = "Ganztägig"
-            
-            title = event.get('summary', 'Ohne Titel')
-            formatted.append(f"{time} - {title}")
-        
-        if formatted:
-            grouped_events.append((label, formatted))
+                flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
+                try:
+                    creds = flow.run_local_server(port=0)
+                except:
+                    auth_url, _ = flow.authorization_url(prompt='consent')
+                    print("\nÖffne diesen Link auf einem anderen Gerät:")
+                    print(auth_url)
+                    code = input("Gib den Code ein, den du nach der Anmeldung erhalten hast: ")
+                    flow.fetch_token(code=code)
+                    creds = flow.credentials
 
-    return grouped_events
+            with open('token.json', 'w') as token:
+                token.write(creds.to_json())
+
+        service = build('calendar', 'v3', credentials=creds)
+
+        now = datetime.datetime.utcnow()
+        start_of_day = now.replace(hour=0, minute=0, second=0, microsecond=0).isoformat() + 'Z'
+        end_of_day = now.replace(hour=23, minute=59, second=59, microsecond=999999).isoformat() + 'Z'
+        today = now.date()
+
+        grouped_events = []
+
+        for label, calendar_id in calendar_dict.items():
+            try:
+                events_result = service.events().list(
+                    calendarId=calendar_id,
+                    timeMin=start_of_day,
+                    timeMax=end_of_day,
+                    maxResults=10,
+                    singleEvents=True,
+                    orderBy='startTime'
+                ).execute()
+            except HttpError as err:
+                if err.resp.status in [401, 403]:
+                    print(f"Zugriff verweigert für Kalender {label}: {err}")
+                    return "AUTH_ERROR"
+                else:
+                    raise
+
+            events = events_result.get('items', [])
+            formatted = []
+            for event in events:
+                if 'dateTime' in event['start']:
+                    time = datetime.datetime.fromisoformat(event['start']['dateTime']).strftime('%H:%M')
+                else:
+                    start_date = datetime.date.fromisoformat(event['start']['date'])
+                    end_date = datetime.date.fromisoformat(event['end']['date'])
+                    if not (start_date <= today < end_date):
+                        continue
+                    time = "Ganztägig"
+                title = event.get('summary', 'Ohne Titel')
+                formatted.append(f"{time} - {title}")
+
+            if formatted:
+                grouped_events.append((label, formatted))
+
+        return grouped_events
+
+    except (RefreshError, HttpError) as e:
+        print(f"Authentifizierungsfehler: {e}")
+        return "AUTH_ERROR"

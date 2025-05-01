@@ -16,9 +16,18 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import io
 from PIL import Image
+import socket
 from inky.auto import auto
 
 locale.setlocale(locale.LC_TIME, "de_CH.UTF-8")
+
+def check_network_connection(host="8.8.8.8", port=53, timeout=3):
+    try:
+        socket.setdefaulttimeout(timeout)
+        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        return True
+    except Exception:
+        return False
 
 def draw_wrapped_text(draw, text, font, max_width, position, line_spacing=5, fill="black"):
     words = text.split()
@@ -163,6 +172,12 @@ resolution = (800, 480)
 img = Image.new("RGB", resolution, color="white")
 draw = ImageDraw.Draw(img)
 
+if not check_network_connection():
+    font_error = ImageFont.truetype("static/fonts/DejaVuSans-Bold.ttf", 36)
+    draw.text((50, 200), "Netzwerkverbindung prüfen", font=font_error, fill="red")
+    img.save("dashboard_simulation.png")
+    exit()
+
 middle_x = resolution[0] // 2
 draw.line([(middle_x, 0), (middle_x, resolution[1])], fill="black", width=2)
 
@@ -244,12 +259,15 @@ grouped_events = get_today_events_grouped(calendar_ids)
 font_news_time = ImageFont.truetype("static/fonts/DejaVuSans-Bold.ttf", 20)
 
 y = 140
-for header, entries in grouped_events:
-    draw.text((news_x, y), header, font=font_news_title, fill="black")
-    y += 30
-    for entry in entries:
-        y = draw_calendar_entry(draw, entry, (font_news_time, font_news_content), (news_x, y))
-        y += 5  # zusätzlicher Abstand zwischen Einträgen
+if grouped_events == "AUTH_ERROR":
+    draw.text((news_x, y), "Authentifizierung erforderlich", font=font_news_title, fill="red")
+else:
+    for header, entries in grouped_events:
+        draw.text((news_x, y), header, font=font_news_title, fill="black")
+        y += 30
+        for entry in entries:
+            y = draw_calendar_entry(draw, entry, (font_news_time, font_news_content), (news_x, y))
+            y += 5  # zusätzlicher Abstand zwischen Einträgen
 
 draw_temperature_chart(CITY, API_KEY, UNITS, LANG, img, position=(10, 360), max_height=120)
 
