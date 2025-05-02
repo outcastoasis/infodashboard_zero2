@@ -22,6 +22,9 @@ def get_today_events_grouped(calendar_dict):
                     creds.refresh(Request())
                 except RefreshError as e:
                     print(f"Token-Refresh fehlgeschlagen: {e}")
+                    if os.path.exists("token.json"):
+                        os.remove("token.json")
+                        print("token.json gelöscht.")
                     return "AUTH_ERROR"
             else:
                 flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
