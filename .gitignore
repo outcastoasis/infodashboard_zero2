@@ -1,4 +1,5 @@
 .env
+calendars.local.json
 /pi-dashboard-master
 credentials.json
 token.json
