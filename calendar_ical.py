@@ -56,6 +56,12 @@ def _fetch_calendar(url: str) -> Calendar:
     return Calendar.from_ical(response.content)
 
 
+def _friendly_error(exc: Exception) -> str:
+    if isinstance(exc, requests.RequestException):
+        return "Kalender nicht erreichbar"
+    return "Kalender konnte nicht gelesen werden"
+
+
 def fetch_today_events(
     sources: list[CalendarSource],
     target_date: date,
@@ -80,7 +86,6 @@ def fetch_today_events(
             )
             groups.append(CalendarGroup(name=source.name, events=events))
         except Exception as exc:
-            groups.append(CalendarGroup(name=source.name, events=[], error=str(exc)))
+            groups.append(CalendarGroup(name=source.name, events=[], error=_friendly_error(exc)))
 
     return groups
-

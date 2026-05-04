@@ -39,6 +39,7 @@ class Fonts:
     section = _font("DejaVuSans-Bold.ttf", 26)
     body = _font("DejaVuSans.ttf", 22)
     body_bold = _font("DejaVuSans-Bold.ttf", 21)
+    event_time = _font("DejaVuSans-Bold.ttf", 18)
     small = _font("DejaVuSans.ttf", 14)
     tiny = _font("DejaVuSans.ttf", 11)
 
@@ -97,7 +98,7 @@ def _draw_icon(image: Image.Image, icon_code: str, xy: tuple[int, int], size: in
 def _format_temp(value: float | None) -> str:
     if value is None:
         return "-"
-    return f"{value:.1f} C"
+    return f"{value:.1f} °C"
 
 
 def _format_wind(value: float | None) -> str:
@@ -131,14 +132,15 @@ def _draw_temperature_strip(
     width: int,
     height: int,
 ) -> None:
-    draw.text((x, y), "Temperatur heute", font=Fonts.section, fill=BLACK)
-    y += 38
+    draw.text((x, y), weather.temperature_title, font=Fonts.section, fill=BLACK)
+    y += 34
     box = (x, y, x + width, y + height)
     draw.rectangle(box, outline=LIGHT_GRAY, width=1)
 
     points = weather.todays_temperatures
     if len(points) < 2:
-        draw.text((x + 12, y + 20), "Noch keine Tagesdaten", font=Fonts.small, fill=GRAY)
+        message = "Keine Wetterdaten geladen" if weather.error else "Zu wenig Datenpunkte"
+        draw.text((x + 12, y + 18), message, font=Fonts.small, fill=GRAY)
         return
 
     temperatures = [temperature for _, temperature in points]
@@ -149,24 +151,24 @@ def _draw_temperature_strip(
     coords = []
     for index, (_, temperature) in enumerate(points):
         px = x + 10 + round(index * (width - 20) / (len(points) - 1))
-        py = y + height - 12 - round((temperature - min_temp) * (height - 24) / span)
+        py = y + height - 18 - round((temperature - min_temp) * (height - 38) / span)
         coords.append((px, py))
 
     draw.line(coords, fill=BLACK, width=3)
     for px, py in coords:
         draw.ellipse((px - 3, py - 3, px + 3, py + 3), fill=BLACK)
 
-    draw.text((x + 10, y + 8), f"Min {_format_temp(min_temp)}", font=Fonts.small, fill=GRAY)
-    draw.text((x + width - 110, y + 8), f"Max {_format_temp(max_temp)}", font=Fonts.small, fill=GRAY)
+    draw.text((x + 10, y + 7), f"Min {_format_temp(min_temp)}", font=Fonts.small, fill=GRAY)
+    draw.text((x + width - 124, y + 7), f"Max {_format_temp(max_temp)}", font=Fonts.small, fill=GRAY)
 
 
 def _event_time(event: CalendarEvent, timezone: ZoneInfo) -> str:
     if event.all_day:
-        return "Ganztag"
+        return "Ganztägig"
     start = event.start
     if isinstance(start, datetime):
         return start.astimezone(timezone).strftime("%H:%M")
-    return "Ganztag"
+    return "Ganztägig"
 
 
 def _draw_event(
@@ -178,9 +180,10 @@ def _draw_event(
     width: int,
 ) -> int:
     time_text = _event_time(event, timezone)
-    time_width = 70
+    time_width = 116
     color = ORANGE if event.all_day else BLACK
-    draw.text((x, y), time_text, font=Fonts.body_bold, fill=color)
+    time_font = Fonts.event_time if event.all_day else Fonts.body_bold
+    draw.text((x, y + (2 if event.all_day else 0)), time_text, font=time_font, fill=color)
     return _draw_wrapped(
         draw,
         event.title,
@@ -212,11 +215,11 @@ def _draw_calendar_groups(
     for group in groups:
         if y > max_y - 30:
             break
-        draw.text((x, y), group.name, font=Fonts.body_bold, fill=BLACK)
-        y += 28
+        draw.text((x, y), group.name, font=Fonts.body_bold, fill=GRAY)
+        y += 30
 
         if group.error:
-            y = _draw_wrapped(draw, f"Fehler: {group.error}", (x, y), Fonts.small, width, max_lines=2, fill=GRAY)
+            y = _draw_wrapped(draw, group.error, (x, y), Fonts.small, width, max_lines=2, fill=GRAY)
             y += 8
             continue
 
@@ -260,7 +263,7 @@ def render_dashboard(
     y = 96
     y = _draw_weather_point(image, draw, "Jetzt", weather.now, 14, y)
     y = _draw_weather_point(image, draw, "In 6 Stunden", weather.later, 14, y + 4)
-    _draw_temperature_strip(draw, weather, 14, 366, left_width - 32, 76)
+    _draw_temperature_strip(draw, weather, 14, 356, left_width - 32, 82)
 
     _draw_calendar_groups(draw, calendar_groups, timezone, right_x, 18, width - right_x - 14, height - 34)
 

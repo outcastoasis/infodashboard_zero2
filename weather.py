@@ -27,28 +27,29 @@ class WeatherData:
     now: WeatherPoint
     later: WeatherPoint
     todays_temperatures: list[tuple[datetime, float]]
+    temperature_title: str = "Temperatur heute"
     error: str | None = None
 
 
 def _empty_weather(error: str) -> WeatherData:
     fallback = WeatherPoint(
         temperature=None,
-        description="Wetter nicht verfuegbar",
+        description="Wetter nicht verfügbar",
         wind=None,
         icon="01d",
     )
     return WeatherData(now=fallback, later=fallback, todays_temperatures=[], error=error)
 
 
-def _cache_path(city: str) -> Path:
+def _cache_path(city: str, cache_date: str) -> Path:
     safe_city = "".join(char if char.isalnum() else "_" for char in city.lower())
-    return CACHE_DIR / f"inky_dashboard_forecast_{safe_city}.json"
+    return CACHE_DIR / f"inky_dashboard_forecast_{safe_city}_{cache_date}.json"
 
 
-def _load_cached_forecast(path: Path) -> dict | None:
+def _load_cached_forecast(path: Path, allow_stale: bool = False) -> dict | None:
     if not path.exists():
         return None
-    if time.time() - path.stat().st_mtime > CACHE_MAX_AGE_SECONDS:
+    if not allow_stale and time.time() - path.stat().st_mtime > CACHE_MAX_AGE_SECONDS:
         return None
     with path.open("r", encoding="utf-8") as handle:
         return json.load(handle)
@@ -62,23 +63,29 @@ def _save_cached_forecast(path: Path, data: dict) -> None:
         pass
 
 
-def _fetch_forecast(city: str, api_key: str, units: str, lang: str) -> dict:
-    cache_path = _cache_path(city)
+def _fetch_forecast(city: str, api_key: str, units: str, lang: str, cache_date: str) -> dict:
+    cache_path = _cache_path(city, cache_date)
     cached = _load_cached_forecast(cache_path)
     if cached:
         return cached
 
-    response = requests.get(
-        "https://api.openweathermap.org/data/2.5/forecast",
-        params={"q": city, "appid": api_key, "units": units, "lang": lang},
-        timeout=15,
-    )
-    response.raise_for_status()
-    data = response.json()
-    if "list" not in data:
-        raise RuntimeError(data.get("message", "OpenWeatherMap response without forecast list"))
-    _save_cached_forecast(cache_path, data)
-    return data
+    try:
+        response = requests.get(
+            "https://api.openweathermap.org/data/2.5/forecast",
+            params={"q": city, "appid": api_key, "units": units, "lang": lang},
+            timeout=15,
+        )
+        response.raise_for_status()
+        data = response.json()
+        if "list" not in data:
+            raise RuntimeError(data.get("message", "OpenWeatherMap response without forecast list"))
+        _save_cached_forecast(cache_path, data)
+        return data
+    except Exception:
+        stale = _load_cached_forecast(cache_path, allow_stale=True)
+        if stale:
+            return stale
+        raise
 
 
 def _point_from_item(item: dict) -> WeatherPoint:
@@ -93,24 +100,33 @@ def _point_from_item(item: dict) -> WeatherPoint:
 
 def load_weather(city: str, api_key: str | None, units: str, lang: str, timezone_name: str) -> WeatherData:
     if not api_key:
-        return _empty_weather("OpenWeatherMap API key fehlt")
+        return _empty_weather("OpenWeatherMap API-Key fehlt")
 
     timezone = ZoneInfo(timezone_name)
     today = datetime.now(timezone).date()
 
     try:
-        data = _fetch_forecast(city, api_key, units, lang)
+        data = _fetch_forecast(city, api_key, units, lang, today.strftime("%Y%m%d"))
         forecast_items = data["list"]
         now = _point_from_item(forecast_items[0])
         later = _point_from_item(forecast_items[min(2, len(forecast_items) - 1)])
 
         todays_temperatures = []
+        all_temperatures = []
         for item in forecast_items:
             timestamp = datetime.fromtimestamp(item["dt"], tz=timezone)
+            all_temperatures.append((timestamp, float(item["main"]["temp"])))
             if timestamp.date() == today:
                 todays_temperatures.append((timestamp, float(item["main"]["temp"])))
 
-        return WeatherData(now=now, later=later, todays_temperatures=todays_temperatures)
+        if len(todays_temperatures) >= 2:
+            return WeatherData(now=now, later=later, todays_temperatures=todays_temperatures)
+
+        return WeatherData(
+            now=now,
+            later=later,
+            todays_temperatures=all_temperatures[:8],
+            temperature_title="Temperaturtrend",
+        )
     except Exception as exc:
         return _empty_weather(str(exc))
-
