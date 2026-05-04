@@ -136,8 +136,6 @@ def _draw_weather_section(
     width: int,
     max_y: int,
 ) -> None:
-    draw.text((x, y), "Wetter", font=Fonts.section, fill=BLACK)
-    y += 38
     y = _draw_weather_point(image, draw, "Jetzt", weather.now, x, y, width)
     y = _draw_weather_point(image, draw, "In 6 Stunden", weather.later, x, y + 8, width)
     chart_y = y + 8
@@ -217,7 +215,7 @@ def _draw_event(
         max_width=width - time_width,
         max_lines=2,
         fill=BLACK,
-    ) + 6
+    ) + 10
 
 
 def _draw_calendar_groups(
@@ -229,9 +227,6 @@ def _draw_calendar_groups(
     width: int,
     max_y: int,
 ) -> None:
-    draw.text((x, y), "Heute", font=Fonts.section, fill=BLACK)
-    y += 38
-
     if not groups:
         draw.text((x, y), "Keine Kalender konfiguriert", font=Fonts.body, fill=BLACK)
         return
@@ -290,7 +285,7 @@ def render_dashboard(
     footer = f"Stand: {now.strftime('%H:%M')}"
     if weather.error:
         footer += " | Wetter pruefen"
-    draw.text((width - _text_width(draw, footer, Fonts.tiny) - margin, 58), footer, font=Fonts.tiny, fill=BLACK)
+    draw.text((width - _text_width(draw, footer, Fonts.tiny) - margin, 16), footer, font=Fonts.tiny, fill=BLACK)
     draw.line((margin, header_bottom, width - margin, header_bottom), fill=BLACK, width=2)
 
     content_top = header_bottom + 14
