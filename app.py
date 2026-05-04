@@ -223,7 +223,7 @@ draw.text((110, 290), f"{weather_later['temperature']}°", font=font_value, fill
 draw.text((110, 320), f"{weather_later['wind']} Wind", font=font_value, fill=BLUE)
 #draw.text((110, 350), f"{weather_later['rain']} Regen", font=font_value, fill=BLUE)
 
-rss_url = "https://partner-feeds.beta.20min.ch/rss/20minuten/zentralschweiz"
+rss_url = "https://partner-feeds.beta.20min.ch/rss/20minuten/regionen/zentralschweiz"
 feed = feedparser.parse(rss_url)
 first_entry = feed.entries[0]
 news_title = first_entry.title
