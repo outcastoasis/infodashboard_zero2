@@ -115,53 +115,16 @@ def _draw_weather_point(
     point: WeatherPoint,
     x: int,
     y: int,
+    width: int | None = None,
 ) -> int:
     draw.text((x, y), title, font=Fonts.section, fill=BLACK)
-    y += 38
-    _draw_icon(image, point.icon, (x, y), 72)
-    draw.text((x + 90, y + 2), point.description, font=Fonts.body, fill=BLACK)
-    draw.text((x + 90, y + 32), _format_temp(point.temperature), font=Fonts.body_bold, fill=ORANGE)
-    draw.text((x + 190, y + 32), _format_wind(point.wind), font=Fonts.body, fill=BLUE)
-    return y + 96
-
-
-def _draw_weather_row(
-    image: Image.Image,
-    draw: ImageDraw.ImageDraw,
-    title: str,
-    point: WeatherPoint,
-    x: int,
-    y: int,
-    width: int,
-) -> int:
-    draw.text((x, y), title, font=Fonts.panel_title, fill=BLACK)
-    draw.line((x, y + 32, x + width, y + 32), fill=BLACK, width=2)
-    content_y = y + 42
-    _draw_icon(image, point.icon, (x, content_y + 3), 62)
-    text_x = x + 80
-    _draw_wrapped(draw, point.description, (text_x, content_y), Fonts.body, width - 86, max_lines=1)
-    draw.text((text_x, content_y + 34), _format_temp(point.temperature), font=Fonts.body_bold, fill=ORANGE)
-    draw.text((text_x + 120, content_y + 34), _format_wind(point.wind), font=Fonts.body, fill=BLUE)
-    return y + 112
-
-
-def _draw_weather_tile(
-    image: Image.Image,
-    draw: ImageDraw.ImageDraw,
-    title: str,
-    point: WeatherPoint,
-    x: int,
-    y: int,
-    width: int,
-) -> None:
-    draw.text((x, y), title, font=Fonts.body_bold, fill=BLACK)
-    draw.line((x, y + 30, x + width, y + 30), fill=BLACK, width=2)
-    content_y = y + 40
-    _draw_icon(image, point.icon, (x, content_y + 3), 50)
-    text_x = x + 60
-    _draw_wrapped(draw, point.description, (text_x, content_y), Fonts.small, width - 62, max_lines=1)
-    draw.text((text_x, content_y + 23), _format_temp(point.temperature), font=Fonts.body_bold, fill=ORANGE)
-    draw.text((text_x, content_y + 50), _format_wind(point.wind), font=Fonts.small, fill=BLUE)
+    y += 34
+    _draw_icon(image, point.icon, (x, y + 2), 58)
+    description_width = (width - 78) if width else 290
+    _draw_wrapped(draw, point.description, (x + 74, y), Fonts.body, description_width, max_lines=1)
+    draw.text((x + 74, y + 30), _format_temp(point.temperature), font=Fonts.body_bold, fill=ORANGE)
+    draw.text((x + 192, y + 30), _format_wind(point.wind), font=Fonts.body, fill=BLUE)
+    return y + 76
 
 
 def _draw_weather_section(
@@ -174,14 +137,11 @@ def _draw_weather_section(
     max_y: int,
 ) -> None:
     draw.text((x, y), "Wetter", font=Fonts.section, fill=BLACK)
-    draw.line((x, y + 36, x + width, y + 36), fill=BLACK, width=3)
-    y += 50
-    tile_gap = 14
-    tile_width = (width - tile_gap) // 2
-    _draw_weather_tile(image, draw, "Jetzt", weather.now, x, y, tile_width)
-    _draw_weather_tile(image, draw, "In 6 Std.", weather.later, x + tile_width + tile_gap, y, tile_width)
-    chart_y = y + 112
-    chart_height = max(94, max_y - chart_y - 34)
+    y += 38
+    y = _draw_weather_point(image, draw, "Jetzt", weather.now, x, y, width)
+    y = _draw_weather_point(image, draw, "In 6 Stunden", weather.later, x, y + 8, width)
+    chart_y = y + 8
+    chart_height = max(86, max_y - chart_y - 28)
     _draw_temperature_strip(draw, weather, x, chart_y, width, chart_height)
 
 
@@ -211,8 +171,8 @@ def _draw_temperature_strip(
 
     coords = []
     for index, (_, temperature) in enumerate(points):
-        px = x + 10 + round(index * (width - 20) / (len(points) - 1))
-        py = y + height - 18 - round((temperature - min_temp) * (height - 38) / span)
+        px = x + 14 + round(index * (width - 28) / (len(points) - 1))
+        py = y + height - 32 - round((temperature - min_temp) * (height - 56) / span)
         coords.append((px, py))
 
     draw.line(coords, fill=BLACK, width=4)
@@ -221,6 +181,10 @@ def _draw_temperature_strip(
 
     draw.text((x + 10, y + 7), f"Min {_format_temp(min_temp)}", font=Fonts.small, fill=BLACK)
     draw.text((x + width - 124, y + 7), f"Max {_format_temp(max_temp)}", font=Fonts.small, fill=BLACK)
+    first_time = points[0][0].strftime("%H:%M")
+    last_time = points[-1][0].strftime("%H:%M")
+    draw.text((x + 12, y + height - 21), first_time, font=Fonts.tiny, fill=BLACK)
+    draw.text((x + width - _text_width(draw, last_time, Fonts.tiny) - 12, y + height - 21), last_time, font=Fonts.tiny, fill=BLACK)
 
 
 def _event_time(event: CalendarEvent, timezone: ZoneInfo) -> str:
@@ -312,9 +276,9 @@ def render_dashboard(
     draw = ImageDraw.Draw(image)
     width, height = resolution
     margin = 14
-    gap = 28
-    header_bottom = 86
-    left_width = 330
+    gap = 24
+    header_bottom = 82
+    left_width = 318
     right_x = margin + left_width + gap
     right_width = width - right_x - margin
 
@@ -327,9 +291,9 @@ def render_dashboard(
     if weather.error:
         footer += " | Wetter pruefen"
     draw.text((width - _text_width(draw, footer, Fonts.tiny) - margin, 58), footer, font=Fonts.tiny, fill=BLACK)
-    draw.line((margin, header_bottom, width - margin, header_bottom), fill=BLACK, width=3)
+    draw.line((margin, header_bottom, width - margin, header_bottom), fill=BLACK, width=2)
 
-    content_top = header_bottom + 16
+    content_top = header_bottom + 14
     _draw_calendar_groups(draw, calendar_groups, timezone, margin, content_top, left_width, height - 20)
     _draw_weather_section(image, draw, weather, right_x, content_top, right_width, height - 18)
 
