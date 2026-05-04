@@ -1,6 +1,7 @@
 import json
 import os
 from dataclasses import dataclass
+from json import JSONDecodeError
 from pathlib import Path
 
 from dotenv import find_dotenv, load_dotenv
@@ -30,11 +31,23 @@ def _load_calendars_from_file(path: Path) -> list[CalendarSource]:
     if not path.exists():
         return []
 
-    with path.open("r", encoding="utf-8") as handle:
-        raw_sources = json.load(handle)
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            raw_sources = json.load(handle)
+    except JSONDecodeError as exc:
+        raise RuntimeError(
+            f"{path} ist kein gueltiges JSON. "
+            f"Pruefe Kommas, Anfuehrungszeichen und Klammern "
+            f"(Zeile {exc.lineno}, Spalte {exc.colno})."
+        ) from exc
+
+    if not isinstance(raw_sources, list):
+        raise RuntimeError(f"{path} muss eine JSON-Liste von Kalendern enthalten.")
 
     calendars = []
     for item in raw_sources:
+        if not isinstance(item, dict):
+            continue
         name = str(item.get("name", "")).strip()
         url = str(item.get("url", "")).strip()
         if name and url:
@@ -73,4 +86,3 @@ def load_settings() -> Settings:
         calendars=calendars,
         preview_path=BASE_DIR / os.getenv("PREVIEW_PATH", "dashboard_simulation.png"),
     )
-
