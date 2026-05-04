@@ -272,7 +272,7 @@ def render_dashboard(
     width, height = resolution
     margin = 14
     gap = 24
-    header_bottom = 82
+    left_header_bottom = 82
     left_width = 318
     right_x = margin + left_width + gap
     right_width = width - right_x - margin
@@ -281,15 +281,16 @@ def render_dashboard(
     date_text = now.strftime("%d.%m.%Y")
     draw.text((margin, 8), weekday, font=Fonts.title, fill=BLACK)
     draw.text((margin, 56), date_text, font=Fonts.subtitle, fill=BLACK)
+    draw.line((margin, left_header_bottom, margin + left_width, left_header_bottom), fill=BLACK, width=2)
 
     footer = f"Stand: {now.strftime('%H:%M')}"
     if weather.error:
         footer += " | Wetter pruefen"
-    draw.text((width - _text_width(draw, footer, Fonts.tiny) - margin, 16), footer, font=Fonts.tiny, fill=BLACK)
-    draw.line((margin, header_bottom, width - margin, header_bottom), fill=BLACK, width=2)
+    draw.text((width - _text_width(draw, footer, Fonts.tiny) - margin, 4), footer, font=Fonts.tiny, fill=BLACK)
 
-    content_top = header_bottom + 14
-    _draw_calendar_groups(draw, calendar_groups, timezone, margin, content_top, left_width, height - 20)
-    _draw_weather_section(image, draw, weather, right_x, content_top, right_width, height - 18)
+    calendar_top = left_header_bottom + 14
+    weather_top = 10
+    _draw_calendar_groups(draw, calendar_groups, timezone, margin, calendar_top, left_width, height - 20)
+    _draw_weather_section(image, draw, weather, right_x, weather_top, right_width, height - 18)
 
     return image
