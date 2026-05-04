@@ -1,101 +1,113 @@
-# 🖥️ Inky Infodashboard
+# Inky Infodashboard
 
-Ein Infodisplay für das Inky Impression 7.3" Display auf dem Raspberry Pi Zero 2 W.  
-Zeigt Wetter, News, Kalendertermine (auch ganztägige), QR-Codes sowie ein Temperaturdiagramm an – optimiert für stromsparende E-Ink-Anzeige.
+Ein reduziertes Infodisplay fuer ein Pimoroni Inky Impression am Raspberry Pi Zero 2 W.
 
----
+Der Fokus liegt auf:
 
-## ⚙️ Features
+- Wetter jetzt und in 6 Stunden
+- Temperaturverlauf fuer den aktuellen Tag
+- Kalendertermine von iCal/ICS-Links
+- lokaler PNG-Vorschau ohne Inky-Display
 
-- Lokale Wetterdaten von OpenWeatherMap
-- Automatische Vorschau der nächsten 6 Stunden
-- RSS-News (z. B. 20min.ch) mit QR-Code
-- Google-Kalender-Integration für mehrere Konten
-- Temperaturverlauf des Tages mit Min-/Max-Markierung (Matplotlib)
-- Viertelstündliches Update via Cronjob
+20min-News, QR-Codes und Google-OAuth wurden entfernt. Kalender werden nur lesend ueber iCal-Links geladen.
 
----
-
-## ⚙️ Konfiguration
-
-Der Standort der Wetterdaten kann in der config.py geändert werden.
-
----
-
-## 📦 Projektstruktur
+## Dateien
 
 ```text
-Inky_Infodashboard/
-├── app.py                  # Hauptprogramm (zeichnet das Dashboard)
-├── weather.py              # Wetterdaten (OpenWeatherMap)
-├── calendar_helper.py      # Google-Kalender-Integration
-├── icon_helper.py          # Pfade für Wetter-Icons
-├── config.py               # API-Einstellungen aus .env
-├── requirements.txt        # Python-Abhängigkeiten
-├── static/                 # Fonts
-├── icons/                  # Lokale SVG-Wettersymbole
-├── .env                    # API Key für OpenWeatherMap (nicht in Git!)
-├── credentials.json        # Google OAuth
-├── token.json              # Zwischengespeicherte Tokens
-├── dashboard_simulation.png# Optional: Vorschau vom generierten Bild
-├── setup.sh                # Einmaliges Setup-Skript
-└── README.md               # Diese Datei
+app.py                    Einstiegspunkt
+config.py                 liest .env und Kalender-Konfiguration
+calendar_ical.py          laedt iCal/ICS-Kalender
+weather.py                laedt OpenWeatherMap Forecast
+renderer.py               zeichnet das Dashboard mit Pillow
+display.py                speichert PNG und aktualisiert Inky
+calendars.example.json    Vorlage fuer Kalenderlinks
+requirements.txt          Python-Abhaengigkeiten
+setup.sh                  Raspberry-Pi-Setup
 ```
 
----
+## Konfiguration
 
-## 🔁 Automatische Anzeige
-
-Das Skript `setup.sh` installiert alle wichtigen Pakete und richtet einen **Cronjob** ein, der `app.py` automatisch um :15 und :45 aufruft und das E-Ink Display aktualisiert.
-
----
-
-## 🚀 Installation
-
-```bash
-git clone https://github.com/outcastoasis/infodashboard_zero2.git
-cd infodashboard_zero2
-chmod +x setup.sh
-./setup.sh
-```
-
----
-
-## 🌐 APIs & Zugang
-
-- `.env` muss folgendes enthalten:
+`.env`:
 
 ```env
 API_KEY=dein_openweathermap_api_key
+WEATHER_CITY=Menzingen,CH
+DASHBOARD_TIMEZONE=Europe/Zurich
 ```
 
-- Für Google Kalender muss `credentials.json` vorhanden sein.
-- Gehe zu Google Cloud Console
-- Aktiviere die Google Calendar API
-- Erstelle Anmeldedaten für eine "Desktop App"
-- Lade die credentials.json herunter und lege sie ins Projektverzeichnis
-- Beim ersten Start von app.py wirst du zur Authentifizierung im Browser weitergeleitet – dabei wird automatisch eine token.json erstellt.
-
----
-
-## 🖼️ Beispielanzeige
-
-![Beispiel](assets/dashboard_simulation_git.png)
-
----
-
-## 🧪 Manuelles Testen
+Kalender lokal anlegen:
 
 ```bash
-python3 app.py
+cp calendars.example.json calendars.local.json
+nano calendars.local.json
 ```
 
----
+`calendars.local.json`:
 
-## 📅 Cronjob prüfen
+```json
+[
+  {
+    "name": "Jascha",
+    "url": "https://calendar.google.com/calendar/ical/.../private-.../basic.ics"
+  }
+]
+```
+
+Diese Datei wird von Git ignoriert, weil die privaten iCal-Links wie Geheimnisse behandelt werden sollten.
+
+## iCal-Link In Google Calendar Finden
+
+1. Google Calendar im Browser oeffnen.
+2. Beim gewuenschten Kalender: Einstellungen und Freigabe.
+3. Abschnitt "Kalender integrieren".
+4. "Geheime Adresse im iCal-Format" kopieren.
+5. Link in `calendars.local.json` einfuegen.
+
+Wenn die geheime iCal-Adresse nicht sichtbar ist, kann sie bei Google-Workspace-Konten durch Admin-Einstellungen deaktiviert sein.
+
+## Lokal Testen
 
 ```bash
-crontab -l
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python app.py --no-display
 ```
 
----
+Danach liegt die Vorschau in `dashboard_simulation.png`.
+
+Unter Windows:
+
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python app.py --no-display
+```
+
+## Raspberry Pi
+
+```bash
+cd ~/Inky_Infodashboard
+source venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+
+Die Display-Ausgabe nutzt weiterhin Pimoroni Inky:
+
+```python
+from inky.auto import auto
+display = auto()
+display.set_image(image)
+display.show()
+```
+
+## Cronjob
+
+Beispiel fuer Updates um :15 und :45:
+
+```cron
+15,45 * * * * /bin/bash -l -c 'cd /home/pi/Inky_Infodashboard && source venv/bin/activate && python app.py >> log/inky.log 2>&1'
+```
+
