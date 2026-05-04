@@ -37,6 +37,7 @@ class Fonts:
     title = _font("DejaVuSans-Bold.ttf", 42)
     subtitle = _font("DejaVuSans.ttf", 20)
     section = _font("DejaVuSans-Bold.ttf", 26)
+    panel_title = _font("DejaVuSans-Bold.ttf", 24)
     body = _font("DejaVuSans.ttf", 22)
     body_bold = _font("DejaVuSans-Bold.ttf", 21)
     event_time = _font("DejaVuSans-Bold.ttf", 18)
@@ -122,6 +123,66 @@ def _draw_weather_point(
     draw.text((x + 90, y + 32), _format_temp(point.temperature), font=Fonts.body_bold, fill=ORANGE)
     draw.text((x + 190, y + 32), _format_wind(point.wind), font=Fonts.body, fill=BLUE)
     return y + 96
+
+
+def _draw_weather_row(
+    image: Image.Image,
+    draw: ImageDraw.ImageDraw,
+    title: str,
+    point: WeatherPoint,
+    x: int,
+    y: int,
+    width: int,
+) -> int:
+    draw.text((x, y), title, font=Fonts.panel_title, fill=BLACK)
+    draw.line((x, y + 32, x + width, y + 32), fill=BLACK, width=2)
+    content_y = y + 42
+    _draw_icon(image, point.icon, (x, content_y + 3), 62)
+    text_x = x + 80
+    _draw_wrapped(draw, point.description, (text_x, content_y), Fonts.body, width - 86, max_lines=1)
+    draw.text((text_x, content_y + 34), _format_temp(point.temperature), font=Fonts.body_bold, fill=ORANGE)
+    draw.text((text_x + 120, content_y + 34), _format_wind(point.wind), font=Fonts.body, fill=BLUE)
+    return y + 112
+
+
+def _draw_weather_tile(
+    image: Image.Image,
+    draw: ImageDraw.ImageDraw,
+    title: str,
+    point: WeatherPoint,
+    x: int,
+    y: int,
+    width: int,
+) -> None:
+    draw.text((x, y), title, font=Fonts.body_bold, fill=BLACK)
+    draw.line((x, y + 30, x + width, y + 30), fill=BLACK, width=2)
+    content_y = y + 40
+    _draw_icon(image, point.icon, (x, content_y + 3), 50)
+    text_x = x + 60
+    _draw_wrapped(draw, point.description, (text_x, content_y), Fonts.small, width - 62, max_lines=1)
+    draw.text((text_x, content_y + 23), _format_temp(point.temperature), font=Fonts.body_bold, fill=ORANGE)
+    draw.text((text_x, content_y + 50), _format_wind(point.wind), font=Fonts.small, fill=BLUE)
+
+
+def _draw_weather_section(
+    image: Image.Image,
+    draw: ImageDraw.ImageDraw,
+    weather: WeatherData,
+    x: int,
+    y: int,
+    width: int,
+    max_y: int,
+) -> None:
+    draw.text((x, y), "Wetter", font=Fonts.section, fill=BLACK)
+    draw.line((x, y + 36, x + width, y + 36), fill=BLACK, width=3)
+    y += 50
+    tile_gap = 14
+    tile_width = (width - tile_gap) // 2
+    _draw_weather_tile(image, draw, "Jetzt", weather.now, x, y, tile_width)
+    _draw_weather_tile(image, draw, "In 6 Std.", weather.later, x + tile_width + tile_gap, y, tile_width)
+    chart_y = y + 112
+    chart_height = max(94, max_y - chart_y - 34)
+    _draw_temperature_strip(draw, weather, x, chart_y, width, chart_height)
 
 
 def _draw_temperature_strip(
@@ -250,26 +311,26 @@ def render_dashboard(
     image = Image.new("RGB", resolution, "white")
     draw = ImageDraw.Draw(image)
     width, height = resolution
-    left_width = width // 2
-    right_x = left_width + 24
-
-    draw.line((left_width, 0, left_width, height), fill=BLACK, width=2)
+    margin = 14
+    gap = 28
+    header_bottom = 86
+    left_width = 330
+    right_x = margin + left_width + gap
+    right_width = width - right_x - margin
 
     weekday = WEEKDAYS_DE[now.weekday()]
     date_text = now.strftime("%d.%m.%Y")
-    draw.text((12, 10), weekday, font=Fonts.title, fill=BLACK)
-    draw.text((14, 58), date_text, font=Fonts.subtitle, fill=BLACK)
-
-    y = 96
-    y = _draw_weather_point(image, draw, "Jetzt", weather.now, 14, y)
-    y = _draw_weather_point(image, draw, "In 6 Stunden", weather.later, 14, y + 4)
-    _draw_temperature_strip(draw, weather, 14, 356, left_width - 32, 82)
-
-    _draw_calendar_groups(draw, calendar_groups, timezone, right_x, 18, width - right_x - 14, height - 34)
+    draw.text((margin, 8), weekday, font=Fonts.title, fill=BLACK)
+    draw.text((margin, 56), date_text, font=Fonts.subtitle, fill=BLACK)
 
     footer = f"Stand: {now.strftime('%H:%M')}"
     if weather.error:
         footer += " | Wetter pruefen"
-    draw.text((width - _text_width(draw, footer, Fonts.tiny) - 10, height - 18), footer, font=Fonts.tiny, fill=BLACK)
+    draw.text((width - _text_width(draw, footer, Fonts.tiny) - margin, 58), footer, font=Fonts.tiny, fill=BLACK)
+    draw.line((margin, header_bottom, width - margin, header_bottom), fill=BLACK, width=3)
+
+    content_top = header_bottom + 16
+    _draw_calendar_groups(draw, calendar_groups, timezone, margin, content_top, left_width, height - 20)
+    _draw_weather_section(image, draw, weather, right_x, content_top, right_width, height - 18)
 
     return image
