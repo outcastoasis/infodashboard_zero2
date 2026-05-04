@@ -17,9 +17,21 @@ import matplotlib.dates as mdates
 import io
 from PIL import Image
 import socket
-from inky.auto import auto
+import sys
+try:
+    from inky.auto import auto
+except ImportError:
+    auto = None
 
-locale.setlocale(locale.LC_TIME, "de_CH.UTF-8")
+try:
+    locale.setlocale(locale.LC_TIME, "de_CH.UTF-8")
+except locale.Error:
+    pass
+
+SKIP_INKY_DISPLAY = (
+    "--no-display" in sys.argv
+    or os.getenv("INKY_SKIP_DISPLAY", "").lower() in {"1", "true", "yes"}
+)
 
 def check_network_connection(host="8.8.8.8", port=53, timeout=3):
     try:
@@ -285,11 +297,17 @@ y = resolution[1] - 20
 draw.text((x, y), now_str, font=font_small, fill="black")
 
 img.save("dashboard_simulation.png")
+print("Simulation gespeichert: dashboard_simulation.png")
 
-try:
-    inky = auto(ask_user=True, verbose=True)
-    resized = img.resize(inky.resolution)
-    inky.set_image(resized)
-    inky.show()
-except Exception as e:
-    print(f"Fehler beim Anzeigen auf dem Inky Display: {e}")
+if SKIP_INKY_DISPLAY:
+    print("Display-Ausgabe durch lokalen Testmodus übersprungen.")
+elif auto is None:
+    print("Inky-Library nicht gefunden. Display-Ausgabe wird übersprungen.")
+else:
+    try:
+        inky = auto(ask_user=True, verbose=True)
+        resized = img.resize(inky.resolution)
+        inky.set_image(resized)
+        inky.show()
+    except Exception as e:
+        print(f"Fehler beim Anzeigen auf dem Inky Display: {e}")
