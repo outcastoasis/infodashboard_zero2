@@ -15,7 +15,7 @@ BLACK = "black"
 BLUE = (0, 80, 180)
 ORANGE = (235, 120, 0)
 GRAY = (90, 90, 90)
-LIGHT_GRAY = (215, 215, 215)
+LIGHT_GRAY = BLACK
 
 FONT_DIR = BASE_DIR / "static" / "fonts"
 WEEKDAYS_DE = [
@@ -135,12 +135,12 @@ def _draw_temperature_strip(
     draw.text((x, y), weather.temperature_title, font=Fonts.section, fill=BLACK)
     y += 34
     box = (x, y, x + width, y + height)
-    draw.rectangle(box, outline=LIGHT_GRAY, width=1)
+    draw.rectangle(box, outline=LIGHT_GRAY, width=2)
 
     points = weather.todays_temperatures
     if len(points) < 2:
         message = "Keine Wetterdaten geladen" if weather.error else "Zu wenig Datenpunkte"
-        draw.text((x + 12, y + 18), message, font=Fonts.small, fill=GRAY)
+        draw.text((x + 12, y + 18), message, font=Fonts.small, fill=BLACK)
         return
 
     temperatures = [temperature for _, temperature in points]
@@ -154,12 +154,12 @@ def _draw_temperature_strip(
         py = y + height - 18 - round((temperature - min_temp) * (height - 38) / span)
         coords.append((px, py))
 
-    draw.line(coords, fill=BLACK, width=3)
+    draw.line(coords, fill=BLACK, width=4)
     for px, py in coords:
-        draw.ellipse((px - 3, py - 3, px + 3, py + 3), fill=BLACK)
+        draw.ellipse((px - 4, py - 4, px + 4, py + 4), fill=BLACK)
 
-    draw.text((x + 10, y + 7), f"Min {_format_temp(min_temp)}", font=Fonts.small, fill=GRAY)
-    draw.text((x + width - 124, y + 7), f"Max {_format_temp(max_temp)}", font=Fonts.small, fill=GRAY)
+    draw.text((x + 10, y + 7), f"Min {_format_temp(min_temp)}", font=Fonts.small, fill=BLACK)
+    draw.text((x + width - 124, y + 7), f"Max {_format_temp(max_temp)}", font=Fonts.small, fill=BLACK)
 
 
 def _event_time(event: CalendarEvent, timezone: ZoneInfo) -> str:
@@ -208,35 +208,35 @@ def _draw_calendar_groups(
     y += 38
 
     if not groups:
-        draw.text((x, y), "Keine Kalender konfiguriert", font=Fonts.body, fill=GRAY)
+        draw.text((x, y), "Keine Kalender konfiguriert", font=Fonts.body, fill=BLACK)
         return
 
     visible_events = 0
     for group in groups:
         if y > max_y - 30:
             break
-        draw.text((x, y), group.name, font=Fonts.body_bold, fill=GRAY)
+        draw.text((x, y), group.name, font=Fonts.body_bold, fill=BLACK)
         y += 30
 
         if group.error:
-            y = _draw_wrapped(draw, group.error, (x, y), Fonts.small, width, max_lines=2, fill=GRAY)
+            y = _draw_wrapped(draw, group.error, (x, y), Fonts.small, width, max_lines=2, fill=BLACK)
             y += 8
             continue
 
         if not group.events:
-            draw.text((x, y), "Keine Termine", font=Fonts.small, fill=GRAY)
+            draw.text((x, y), "Keine Termine", font=Fonts.small, fill=BLACK)
             y += 26
             continue
 
         for event in group.events:
             if y > max_y - 44:
-                draw.text((x, y), "...", font=Fonts.body, fill=GRAY)
+                draw.text((x, y), "...", font=Fonts.body, fill=BLACK)
                 return
             y = _draw_event(draw, event, timezone, x, y, width)
             visible_events += 1
 
     if visible_events == 0 and all(not group.error for group in groups):
-        draw.text((x, y), "Keine Termine", font=Fonts.body, fill=GRAY)
+        draw.text((x, y), "Keine Termine", font=Fonts.body, fill=BLACK)
 
 
 def render_dashboard(
@@ -258,7 +258,7 @@ def render_dashboard(
     weekday = WEEKDAYS_DE[now.weekday()]
     date_text = now.strftime("%d.%m.%Y")
     draw.text((12, 10), weekday, font=Fonts.title, fill=BLACK)
-    draw.text((14, 58), date_text, font=Fonts.subtitle, fill=GRAY)
+    draw.text((14, 58), date_text, font=Fonts.subtitle, fill=BLACK)
 
     y = 96
     y = _draw_weather_point(image, draw, "Jetzt", weather.now, 14, y)
@@ -270,6 +270,6 @@ def render_dashboard(
     footer = f"Stand: {now.strftime('%H:%M')}"
     if weather.error:
         footer += " | Wetter pruefen"
-    draw.text((width - _text_width(draw, footer, Fonts.tiny) - 10, height - 18), footer, font=Fonts.tiny, fill=GRAY)
+    draw.text((width - _text_width(draw, footer, Fonts.tiny) - 10, height - 18), footer, font=Fonts.tiny, fill=BLACK)
 
     return image
