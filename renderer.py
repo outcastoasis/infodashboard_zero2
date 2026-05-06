@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -158,31 +159,49 @@ def _draw_temperature_strip(
 
     points = weather.todays_temperatures
     if len(points) < 2:
-        message = "Keine Wetterdaten geladen" if weather.error else "Zu wenig Datenpunkte"
+        message = "Keine Wetterdaten geladen" if weather.error else "Keine Daten von 03 bis 00 Uhr"
         draw.text((x + 12, y + 18), message, font=Fonts.small, fill=BLACK)
         return
 
     temperatures = [temperature for _, temperature in points]
     min_temp = min(temperatures)
     max_temp = max(temperatures)
-    span = max(max_temp - min_temp, 1)
+    axis_min = math.floor(min_temp)
+    axis_max = math.ceil(max_temp)
+    if axis_min == axis_max:
+        axis_min -= 1
+        axis_max += 1
+    tick_count = min(5, max(3, axis_max - axis_min + 1))
+    tick_step = max(1, math.ceil((axis_max - axis_min) / (tick_count - 1)))
+    axis_max = axis_min + tick_step * (tick_count - 1)
+    span = max(axis_max - axis_min, 1)
+    plot_left = x + 38
+    plot_right = x + width - 12
+    plot_top = y + 14
+    plot_bottom = y + height - 38
+    time_label_y = y + height - 22
+
+    for grid_value in range(axis_min, axis_max + 1, tick_step):
+        grid_y = plot_bottom - round((grid_value - axis_min) * (plot_bottom - plot_top) / span)
+        label = f"{grid_value}°"
+        draw.text((x + 6, grid_y - 8), label, font=Fonts.small, fill=BLACK)
+        draw.line((plot_left, grid_y, plot_right, grid_y), fill=BLACK, width=1)
 
     coords = []
     for index, (_, temperature) in enumerate(points):
-        px = x + 14 + round(index * (width - 28) / (len(points) - 1))
-        py = y + height - 32 - round((temperature - min_temp) * (height - 56) / span)
+        px = plot_left + round(index * (plot_right - plot_left) / (len(points) - 1))
+        py = plot_bottom - round((temperature - axis_min) * (plot_bottom - plot_top) / span)
         coords.append((px, py))
 
-    draw.line(coords, fill=BLACK, width=4)
-    for px, py in coords:
-        draw.ellipse((px - 4, py - 4, px + 4, py + 4), fill=BLACK)
+    draw.line(coords, fill=ORANGE, width=4)
+    for index, (px, py) in enumerate(coords):
+        draw.ellipse((px - 4, py - 4, px + 4, py + 4), fill=ORANGE)
 
-    draw.text((x + 10, y + 7), f"Min {_format_temp(min_temp)}", font=Fonts.small, fill=BLACK)
-    draw.text((x + width - 124, y + 7), f"Max {_format_temp(max_temp)}", font=Fonts.small, fill=BLACK)
-    first_time = points[0][0].strftime("%H:%M")
-    last_time = points[-1][0].strftime("%H:%M")
-    draw.text((x + 12, y + height - 21), first_time, font=Fonts.tiny, fill=BLACK)
-    draw.text((x + width - _text_width(draw, last_time, Fonts.tiny) - 12, y + height - 21), last_time, font=Fonts.tiny, fill=BLACK)
+        timestamp = points[index][0]
+        label = timestamp.strftime("%H") if timestamp.minute == 0 else timestamp.strftime("%H:%M")
+        label_x = px - (_text_width(draw, label, Fonts.tiny) // 2)
+        label_x = max(x + 4, min(label_x, x + width - _text_width(draw, label, Fonts.tiny) - 4))
+        draw.text((label_x, time_label_y), label, font=Fonts.tiny, fill=BLACK)
 
 
 def _event_time(event: CalendarEvent, timezone: ZoneInfo) -> str:
