@@ -12,7 +12,6 @@ import requests
 
 CACHE_DIR = Path("/tmp")
 CACHE_MAX_AGE_SECONDS = 30 * 60
-DAILY_FORECAST_CACHE_MAX_AGE_SECONDS = 36 * 60 * 60
 
 
 @dataclass(frozen=True)
@@ -64,6 +63,28 @@ def _save_cached_forecast(path: Path, data: dict) -> None:
         pass
 
 
+def _load_graph_temperatures(path: Path, timezone: ZoneInfo) -> list[tuple[datetime, float]] | None:
+    if not path.exists():
+        return None
+    with path.open("r", encoding="utf-8") as handle:
+        raw_points = json.load(handle)
+    return [
+        (datetime.fromisoformat(timestamp).astimezone(timezone), float(temperature))
+        for timestamp, temperature in raw_points
+    ]
+
+
+def _save_graph_temperatures(path: Path, points: list[tuple[datetime, float]]) -> None:
+    try:
+        with path.open("w", encoding="utf-8") as handle:
+            json.dump(
+                [(timestamp.isoformat(), temperature) for timestamp, temperature in points],
+                handle,
+            )
+    except OSError:
+        pass
+
+
 def _fetch_forecast(city: str, api_key: str, units: str, lang: str, cache_date: str) -> dict:
     cache_path = _cache_path(city, cache_date, "forecast")
     cached = _load_cached_forecast(cache_path)
@@ -87,25 +108,6 @@ def _fetch_forecast(city: str, api_key: str, units: str, lang: str, cache_date: 
         if stale:
             return stale
         raise
-
-
-def _fetch_daily_forecast(city: str, api_key: str, units: str, lang: str, cache_date: str) -> dict:
-    cache_path = _cache_path(city, cache_date, "daily_forecast")
-    cached = _load_cached_forecast(cache_path, allow_stale=True)
-    if cached and time.time() - cache_path.stat().st_mtime < DAILY_FORECAST_CACHE_MAX_AGE_SECONDS:
-        return cached
-
-    response = requests.get(
-        "https://api.openweathermap.org/data/2.5/forecast",
-        params={"q": city, "appid": api_key, "units": units, "lang": lang},
-        timeout=15,
-    )
-    response.raise_for_status()
-    data = response.json()
-    if "list" not in data:
-        raise RuntimeError(data.get("message", "OpenWeatherMap response without forecast list"))
-    _save_cached_forecast(cache_path, data)
-    return data
 
 
 def _fetch_current_weather(city: str, api_key: str, units: str, lang: str, cache_date: str) -> dict:
@@ -151,6 +153,35 @@ def _closest_forecast_item(items: list[dict], target: datetime) -> dict:
     return min(items, key=lambda item: abs((_timestamp_from_item(item, target.tzinfo) - target).total_seconds()))
 
 
+def _build_graph_temperatures(
+    forecast_items: list[dict],
+    timezone: ZoneInfo,
+    today,
+    current_data: dict | None,
+    current_time: datetime,
+) -> list[tuple[datetime, float]]:
+    graph_start = datetime.combine(today, datetime.min.time(), tzinfo=timezone) + timedelta(hours=3)
+    graph_end = datetime.combine(today + timedelta(days=1), datetime.min.time(), tzinfo=timezone)
+    graph_temperatures = []
+
+    for item in forecast_items:
+        timestamp = _timestamp_from_item(item, timezone)
+        if graph_start <= timestamp <= graph_end:
+            graph_temperatures.append((timestamp, float(item["main"]["temp"])))
+
+    graph_temperatures.sort(key=lambda point: point[0])
+
+    if (
+        len(graph_temperatures) == 1
+        and current_data
+        and graph_start <= current_time <= graph_end
+        and current_time < graph_temperatures[0][0]
+    ):
+        graph_temperatures.insert(0, (current_time, float(current_data["main"]["temp"])))
+
+    return graph_temperatures
+
+
 def load_weather(city: str, api_key: str | None, units: str, lang: str, timezone_name: str) -> WeatherData:
     if not api_key:
         return _empty_weather("OpenWeatherMap API-Key fehlt")
@@ -161,9 +192,7 @@ def load_weather(city: str, api_key: str | None, units: str, lang: str, timezone
     try:
         forecast_date = today.strftime("%Y%m%d")
         data = _fetch_forecast(city, api_key, units, lang, forecast_date)
-        daily_data = _fetch_daily_forecast(city, api_key, units, lang, forecast_date)
         forecast_items = data["list"]
-        daily_forecast_items = daily_data["list"]
         try:
             current_data = _fetch_current_weather(city, api_key, units, lang, today.strftime("%Y%m%d"))
             current_time = _timestamp_from_item(current_data, timezone)
@@ -176,18 +205,17 @@ def load_weather(city: str, api_key: str | None, units: str, lang: str, timezone
         later_target = current_time + timedelta(hours=6)
         later = _point_from_item(_closest_forecast_item(forecast_items, later_target))
 
-        graph_start = datetime.combine(today, datetime.min.time(), tzinfo=timezone) + timedelta(hours=3)
-        graph_end = datetime.combine(today + timedelta(days=1), datetime.min.time(), tzinfo=timezone)
-        graph_temperatures = []
-        if current_data and graph_start <= current_time <= graph_end:
-            graph_temperatures.append((current_time, float(current_data["main"]["temp"])))
-
-        for item in daily_forecast_items:
-            timestamp = _timestamp_from_item(item, timezone)
-            if graph_start <= timestamp <= graph_end and timestamp > current_time:
-                graph_temperatures.append((timestamp, float(item["main"]["temp"])))
-
-        graph_temperatures.sort(key=lambda point: point[0])
+        graph_cache_path = _cache_path(city, forecast_date, "graph")
+        graph_temperatures = _load_graph_temperatures(graph_cache_path, timezone)
+        if graph_temperatures is None:
+            graph_temperatures = _build_graph_temperatures(
+                forecast_items=forecast_items,
+                timezone=timezone,
+                today=today,
+                current_data=current_data,
+                current_time=current_time,
+            )
+            _save_graph_temperatures(graph_cache_path, graph_temperatures)
 
         if len(graph_temperatures) >= 2:
             return WeatherData(now=now, later=later, todays_temperatures=graph_temperatures)
